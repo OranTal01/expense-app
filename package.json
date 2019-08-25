@@ -46,13 +46,12 @@
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
     "validator": "^10.11.0",
-    "webpack": "3.1.0"
-  },
-  "devDependencies": {
+    "webpack": "3.1.0",
     "enzyme": "3.0.0",
     "enzyme-to-json": "3.0.1",
     "jest": "20.0.4",
     "react-test-renderer": "^16.8.2",
     "webpack-dev-server": "2.5.1"
-  }
+  },
+  "devDependencies": {}
 }
