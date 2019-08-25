@@ -2,14 +2,24 @@
 
 exports[`should render ExpenseList with empty message 1`] = `
 <div>
+  <h1>
+    Expense List
+  </h1>
   <p>
     No Expenses
   </p>
+  <h3>
+    Total Amount:
+    0.00
+  </h3>
 </div>
 `;
 
 exports[`should render ExpenseList with expenses 1`] = `
 <div>
+  <h1>
+    Expense List
+  </h1>
   <ExpenseListItem
     amount={195}
     createdAt={0}
@@ -34,5 +44,9 @@ exports[`should render ExpenseList with expenses 1`] = `
     key="3"
     note=""
   />
+  <h3>
+    Total Amount:
+    114195.00
+  </h3>
 </div>
 `;
