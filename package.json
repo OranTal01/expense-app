@@ -19,8 +19,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "chalk": "^2.4.2",
     "css-loader": "^2.1.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "express": "^4.16.4",
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "enzyme": "3.0.0",
+    "enzyme-adapter-react-16": "1.0.0",
     "enzyme-to-json": "3.0.1",
     "jest": "20.0.4",
     "react-test-renderer": "^16.8.2",
