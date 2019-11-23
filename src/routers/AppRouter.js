@@ -6,6 +6,8 @@ import EditExpensePage from '../components/EditExpensePage';
 import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
+import CurrencyConverter from '../components/CurrencyConverter';
+
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -14,7 +16,8 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={ExpenseDashboardPage} exact={true} />
         <Route path="/create" component={AddExpensePage} />
-        <Route path="/edit/:id" component={EditExpensePage} />
+        <Route path="/edit/:id" component={ EditExpensePage } />
+        <Route path='/Currency' component={CurrencyConverter} />
         <Route path="/help" component={HelpPage} />
         <Route component={NotFoundPage} />
       </Switch>
