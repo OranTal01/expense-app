@@ -1,6 +1,6 @@
 import React from 'react';
-import selectExpensesTotal  from '../selectors/expenses-total';
 import { connect } from 'react-redux'
+import selectExpensesTotal  from '../selectors/expenses-total';
 import selectExpenses from '../selectors/expenses';
 import numeral from "numeral";
 
@@ -26,11 +26,12 @@ if (numeral.locales["user-locale"] === undefined) {
 export const ExpensesSummery = (props) => {
     const expenseTotal = selectExpensesTotal(props.expenses);
     const convertExpenseTotal = numeral(expenseTotal / 100).format("$0,0.00");
-    const expenseAmount = props.expenses.length
+    const expenseLength = props.expenses.length
+    const expenseWord = props.expenses.length > 1 ? 'expenses' : 'expense'
     return (
         <div>
-            { props.expenses.length > 0 ? <p> Viewing { expenseAmount } expenses totalling
-            { convertExpenseTotal }</p> : '' }
+            { props.expenses.length > 0 ? <h1> Viewing { expenseLength } {expenseWord} totalling 
+            { convertExpenseTotal }</h1> : '' }
         </div>
     )
 };

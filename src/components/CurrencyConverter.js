@@ -65,7 +65,18 @@ class CurrencyConverter extends React.Component {
     render() {
         return (
             <div>
-                {this.state.error && <p>{this.state.error}</p>}
+                <header>
+                { this.state.date && <h3>Date of Currency Converter: { this.state.date }</h3>}
+                { this.state.result && <h2>Convert To: { this.state.result } { this.state.convertTo }</h2>}
+                </header>
+                <div>
+                { this.state.error && <p>{ this.state.error }</p> }
+                </div>
+                <div>
+                { this.state.amountConverter &&
+                    <p>your Currency Converter is:
+                { this.state.amountConverter }</p> }
+                </div>
                 <form onSubmit={this.onCurrencyConverter}>
                     <div>
                     Base Currency:
@@ -149,9 +160,6 @@ class CurrencyConverter extends React.Component {
                         <option value="KRW">KRW</option>
                         <option value="PLN">PLN</option>
                         </select>
-                        { this.state.amountConverter &&
-                            <p>your Currency Converter is:
-                        { this.state.amountConverter }</p> }
                     </div>
                     <button>
                         Start Converter
@@ -160,8 +168,6 @@ class CurrencyConverter extends React.Component {
                 <button onClick={ this.onSwapCurrency }>
                 Swap currency
                 </button>
-                { this.state.date && <p>Date of Currency Converter: { this.state.date }</p>}
-                { this.state.result && <p>Convert To: { this.state.result } { this.state.convertTo }</p>}
             </div>
         )
     }
