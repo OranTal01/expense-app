@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 export const LoginPage = ({startLogin}) => (
         <div>
-        this is from Login page !
         <button onClick={startLogin}>Login</button>
         </div>
 );
