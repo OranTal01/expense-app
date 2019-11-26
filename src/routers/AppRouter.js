@@ -1,28 +1,31 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
-import Header from '../components/Header';
 import CurrencyConverter from '../components/CurrencyConverter';
+import LoginPage from '../components/LoginPage';
+import PrivateRoute  from './PrivateRoute';
 
+export const history = createHistory();
 
-const AppRouter = () => (
-  <BrowserRouter>
+export const AppRouter = () => (
+  <Router history={history}>
     <div>
-      <Header />
       <Switch>
-        <Route path="/" component={ExpenseDashboardPage} exact={true} />
-        <Route path="/create" component={AddExpensePage} />
-        <Route path="/edit/:id" component={ EditExpensePage } />
-        <Route path='/Currency' component={CurrencyConverter} />
+        <Route path="/" component={LoginPage} exact={true}/>
+        <PrivateRoute path="/dashboard" component={ExpenseDashboardPage} />
+        <PrivateRoute path="/create" component={AddExpensePage} />
+        <PrivateRoute path="/edit/:id" component={ EditExpensePage } />
+        <PrivateRoute path='/Currency' component={CurrencyConverter} />
         <Route path="/help" component={HelpPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
