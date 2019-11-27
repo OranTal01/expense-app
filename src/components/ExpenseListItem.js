@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import numeral from "numeral";
 
-const ExpenseListItem = ({ id, description, amount, createdAt }) => {
+const ExpenseListItem = ({ id, description, amount, createdAt, note }) => {
   if (numeral.locales["user-locale"] === undefined) {
     numeral.register("locale", "user-locale", {
       delimiters: {
@@ -30,7 +30,7 @@ const ExpenseListItem = ({ id, description, amount, createdAt }) => {
         <h3>{description}</h3>
       </Link>
       <p>
-        {amountShekel}-{moment(createdAt).format("DD MMMM, YYYY")}
+        {amountShekel}-{moment(createdAt).format("DD MMMM, YYYY")} - note: {note}
       </p>
     </div>
   );

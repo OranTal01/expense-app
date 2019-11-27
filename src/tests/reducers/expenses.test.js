@@ -68,7 +68,7 @@ test('should not edit an expense if id not found', () => {
 
 test('should set expense', () => {
   const action = {
-    type: 'SET_EXPENSE',
+    type: 'SET_EXPENSES',
     expenses: [expenses[0]]
   };
   const state = expensesReducer(expenses, action)

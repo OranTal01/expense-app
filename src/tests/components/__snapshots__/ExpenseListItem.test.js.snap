@@ -14,6 +14,7 @@ exports[`should render ExpenseListItem correctly 1`] = `
     ₪1.95
     -
     01 January, 1970
+     - note: 
   </p>
 </div>
 `;

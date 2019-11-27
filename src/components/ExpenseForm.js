@@ -1,11 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import {history} from '../routers/AppRouter';
+
 
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       description: props.expense ? props.expense.description : '',
       note: props.expense ? props.expense.note : '',
@@ -53,6 +54,15 @@ export default class ExpenseForm extends React.Component {
       });
     }
   };
+
+  toggleAddEditExpense = () => {
+    if (history.location.pathname === '/create') {
+      return true
+    } else {
+      return false
+    }
+  };
+
   render() {
     return (
       <div>
@@ -85,7 +95,7 @@ export default class ExpenseForm extends React.Component {
             onChange={this.onNoteChange}
           >
           </textarea>
-          <button>Add Expense</button>
+          {this.toggleAddEditExpense() ? <button>Add Expense</button> : <button>Add Edit Expense</button> }
         </form>
       </div>
     )
