@@ -10,6 +10,19 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID
 };
 
+firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
+
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { firebase, googleAuthProvider, database as default };
+
+  
+  
+  
+  
+  
 // const firebaseConfig = {
 //   apiKey: "AIzaSyApzjadytp4fvhHUveoSEDBMbk-GzTkXXc",
 //   authDomain: "expensify-a0662.firebaseapp.com",
@@ -19,14 +32,6 @@ const firebaseConfig = {
 //   messagingSenderId: "5000931356",
 //   appId: "1:5000931356:web:a7433f3953998865"
 // };
-
-firebase.initializeApp(firebaseConfig);
-
-const database = firebase.database();
-
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-
-export { firebase, googleAuthProvider, database as default };
 
 // Setup "expenses" with three items (description, note, amount, createdAt)
 // database.ref('expenses').push({
