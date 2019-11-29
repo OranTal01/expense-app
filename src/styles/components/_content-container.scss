@@ -1,4 +1,11 @@
 .content-container {
-  margin: 0 auto;
-  padding: 0 $m-size;
+    padding: 0 30rem;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: $desktop-breakpoint) {
+        padding: 0 ;
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem;
+    }
 }

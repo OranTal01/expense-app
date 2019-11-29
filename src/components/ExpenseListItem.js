@@ -25,14 +25,18 @@ const ExpenseListItem = ({ id, description, amount, createdAt, note }) => {
 
   const amountShekel = numeral(amount / 100).format("$0,0.00");
   return (
-    <div>
-      <Link to={`/edit/${id}`}>
-        <h3>{description}</h3>
+    <Link
+      className="list-item"
+      to={ `/edit/${id}` }>
+      <div>
+        <div className="list-item__sub-title">
+          { moment(createdAt).format("DD MMMM, YYYY") }
+        </div>
+        <h3  className="list-item__title">{ description }</h3>
+        <div>{ note }</div>
+      </div>
+      <h3 className="list-item__data">{ amountShekel }</h3>
       </Link>
-      <p>
-        {amountShekel}-{moment(createdAt).format("DD MMMM, YYYY")} - note: {note}
-      </p>
-    </div>
   );
 };
 

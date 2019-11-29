@@ -9,17 +9,20 @@ export const Header = ({ startLogout }) => (
     <div className="content-container">
       <div className="header__content">
         <h3 className="header__title--user">
-        <img className="user-icon" width="30" height="30" src={firebase.auth().currentUser.photoURL} />
+          <img className="user-icon" width="30" height="30"
+          src={ firebase.auth().currentUser.photoURL } />
           { firebase.auth().currentUser.displayName }
         </h3>
-    <Link className="header__title" to="/dashboard">
-      <h1>Expensify</h1>
-    </Link>
-    <Link className="header__title" to="/Currency">
-      <h1>Currency Converter</h1>
-      </Link>
-      <button className="button button--link" onClick={startLogout}>Logout</button>
-  </div>
+        <Link className="header__title" to="/dashboard">
+          <h1>Expensify</h1>
+        </Link>
+        <Link className="header__title" to="/Currency">
+          <h1>Currency Converter</h1>
+        </Link>
+        <div>
+        <button className="button button--link" onClick={startLogout}>Logout</button>
+        </div>
+      </div>
     </div>
   </header>
 );

@@ -66,9 +66,15 @@ class CurrencyConverter extends React.Component {
         return (
             <div>
                 <header>
+                <div className="page-header">
+                    <div className="content-container">
+                        <h1 className="page-header__title">Currency Converter</h1>
+                    </div>     
+                </div>           
                 { this.state.date && <h3>Date of Currency Converter: { this.state.date }</h3>}
                 { this.state.result && <h2>Convert To: { this.state.result } { this.state.convertTo }</h2>}
                 </header>
+                <div className="content-container">
                 <div>
                 { this.state.error && <p>{ this.state.error }</p> }
                 </div>
@@ -80,10 +86,13 @@ class CurrencyConverter extends React.Component {
                 <form onSubmit={this.onCurrencyConverter}>
                     <div>
                     Base Currency:
-                    <input type="text"
+                    <input
+                            className="text-input"
+                            type="text"
                             value={ this.state.amount }
                             onChange={ this.handleInput}/>
                         <select
+                            className="select"
                         value={ this.state.base }
                         onChange={this.onBaseCurrencyChange}>
                             <option value="USD">USD</option>
@@ -124,6 +133,7 @@ class CurrencyConverter extends React.Component {
                     <div>
                     Convert To:
                         <select
+                            className="select"
                         value={ this.state.convertTo }
                         onChange={this.onConvertCurrencyChange}>
                         <option value="USD">USD</option>
@@ -161,13 +171,17 @@ class CurrencyConverter extends React.Component {
                         <option value="PLN">PLN</option>
                         </select>
                     </div>
-                    <button>
-                        Start Converter
-                    </button>
+                        <button
+                            className="button">
+                                Start Converter
+                        </button>
+                        <button
+                        className="button"
+                        onClick={ this.onSwapCurrency }>
+                            Swap currency
+                        </button>
                 </form>
-                <button onClick={ this.onSwapCurrency }>
-                Swap currency
-                </button>
+                </div>
             </div>
         )
     }
