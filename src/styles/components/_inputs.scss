@@ -4,6 +4,7 @@
   font-size: $font-size-large;
   font-weight: 300;
   padding: $s-size;
+  color: black;
 }
 
 .select {
@@ -18,11 +19,11 @@
 
 @media (max-width: $desktop-breakpoint) {
   .DateRangePickerInput {
-    width: 105%;
+    width: 100%;
   }
   .DateRangePickerInput__clear-dates {
     .DateRangePickerInput__close-icon {
-      margin: -20px -20px 0 0px;
+      margin: -20px 0 0 0;
     }
   }
 }
