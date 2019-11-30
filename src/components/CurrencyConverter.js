@@ -19,6 +19,9 @@ class CurrencyConverter extends React.Component {
                 error: 'Please provide amount to converter.'
             }))
         } else {
+            this.setState(() => ({
+                error: ''
+            }))
             fetch(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`)
             .then(res => res.json())
             .then(data => {
@@ -64,74 +67,77 @@ class CurrencyConverter extends React.Component {
 
     render() {
         return (
-            <div>
-                <header>
+        <div>
+            <header>
                 <div className="page-header">
                     <div className="content-container">
                         <h1 className="page-header__title">Currency Converter</h1>
-                    </div>     
-                </div>           
-                { this.state.date && <h3>Date of Currency Converter: { this.state.date }</h3>}
-                { this.state.result && <h2>Convert To: { this.state.result } { this.state.convertTo }</h2>}
-                </header>
-                <div className="content-container">
-                <div>
-                { this.state.error && <p>{ this.state.error }</p> }
+                    </div>
                 </div>
+            </header>
+            <div className="content-container">
                 <div>
-                { this.state.amountConverter &&
-                    <p>your Currency Converter is:
-                { this.state.amountConverter }</p> }
+                    { this.state.amountConverter &&<p>Your Currency Converter is:{ this.state.amountConverter.toFixed(2) }</p> }
                 </div>
-                <form onSubmit={this.onCurrencyConverter}>
+                    <form
+                        className="form"
+                        onSubmit={ this.onCurrencyConverter }>
+                    <div className="form__error">
+                    { this.state.error && <p>{ this.state.error }</p> }
+                    </div>
                     <div>
-                    Base Currency:
-                    <input
+                        <input
+                            placeholder="Base Currency"
                             className="text-input"
                             type="text"
                             value={ this.state.amount }
                             onChange={ this.handleInput}/>
                         <select
                             className="select"
-                        value={ this.state.base }
-                        onChange={this.onBaseCurrencyChange}>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="ILS">ILS</option>
-                            <option value="GBP">GBP</option>
-                            <option value="CAD">CAD</option>
-                            <option value="HKD">HKD</option>
-                            <option value="ISK">ISK</option>
-                            <option value="PHP">PHP</option>
-                            <option value="DKK">DKK</option>
-                            <option value="HUF">HUF</option>
-                            <option value="CZK">CZK</option>
-                            <option value="RON">RON</option>
-                            <option value="SEK">SEK</option>
-                            <option value="IDR">IDR</option>
-                            <option value="INR">INR</option>
-                            <option value="BRL">BRL</option>
-                            <option value="RUB">RUB</option>
-                            <option value="HRK">HRK</option>
-                            <option value="JPY">JPY</option>
-                            <option value="THB">THB</option>
-                            <option value="CHF">CHF</option>
-                            <option value="MYR">MYR</option>
-                            <option value="BGN">BGN</option>
-                            <option value="TRY">TRY</option>
-                            <option value="CNY">CNY</option>
-                            <option value="NOK">NOK</option>
-                            <option value="NZD">NZD</option>
-                            <option value="ZAR">ZAR</option>
-                            <option value="MXN">MXN</option>
-                            <option value="SGD">SGD</option>
-                            <option value="AUD">AUD</option>
-                            <option value="KRW">KRW</option>
-                            <option value="PLN">PLN</option>
+                            value={ this.state.base }
+                                onChange={this.onBaseCurrencyChange}>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="ILS">ILS</option>
+                                <option value="GBP">GBP</option>
+                                <option value="CAD">CAD</option>
+                                <option value="HKD">HKD</option>
+                                <option value="ISK">ISK</option>
+                                <option value="PHP">PHP</option>
+                                <option value="DKK">DKK</option>
+                                <option value="HUF">HUF</option>
+                                <option value="CZK">CZK</option>
+                                <option value="RON">RON</option>
+                                <option value="SEK">SEK</option>
+                                <option value="IDR">IDR</option>
+                                <option value="INR">INR</option>
+                                <option value="BRL">BRL</option>
+                                <option value="RUB">RUB</option>
+                                <option value="HRK">HRK</option>
+                                <option value="JPY">JPY</option>
+                                <option value="THB">THB</option>
+                                <option value="CHF">CHF</option>
+                                <option value="MYR">MYR</option>
+                                <option value="BGN">BGN</option>
+                                <option value="TRY">TRY</option>
+                                <option value="CNY">CNY</option>
+                                <option value="NOK">NOK</option>
+                                <option value="NZD">NZD</option>
+                                <option value="ZAR">ZAR</option>
+                                <option value="MXN">MXN</option>
+                                <option value="SGD">SGD</option>
+                                <option value="AUD">AUD</option>
+                                <option value="KRW">KRW</option>
+                                <option value="PLN">PLN</option>
                     </select>
                     </div>
                     <div>
-                    Convert To:
+                        <input
+                                placeholder='Convert To'
+                                value={ `${this.state.result}` }
+                                type="text"
+                                className="text-input"
+                                disabled={ true }/>
                         <select
                             className="select"
                         value={ this.state.convertTo }
@@ -170,19 +176,23 @@ class CurrencyConverter extends React.Component {
                         <option value="KRW">KRW</option>
                         <option value="PLN">PLN</option>
                         </select>
-                    </div>
+                        </div>
+                    <div>
                         <button
-                            className="button">
-                                Start Converter
+                        className="button">
+                        Start Converter
                         </button>
-                        <button
-                        className="button"
-                        onClick={ this.onSwapCurrency }>
-                            Swap currency
-                        </button>
-                </form>
+                        </div>
+                    </form>
+                    <div>
+                    <button
+                    className="button button--secondary"
+                    onClick={ this.onSwapCurrency }>
+                    Swap currency
+                    </button>
                 </div>
             </div>
+        </div>
         )
     }
 }
