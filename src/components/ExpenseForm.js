@@ -88,7 +88,8 @@ export default class ExpenseForm extends React.Component {
     return (
       <form
       className="form"
-      onSubmit={ this.onSubmit }>
+        onSubmit={ this.onSubmit }>
+        {this.state.error && <p className="form__error">{this.state.error}</p>}
       <input
       className="text-input"
       type="text"
@@ -97,7 +98,6 @@ export default class ExpenseForm extends React.Component {
       value={this.state.description}
       onChange={this.onDescriptionChange}
   />
-  {this.state.error && <p className="form__error">{this.state.error}</p>}
   <input
     className="text-input"
     type="text"

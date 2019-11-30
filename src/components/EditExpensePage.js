@@ -2,16 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import RemoveExpenseModal from './RemoveExpenseModal';
 
 export class EditExpensePage extends React.Component {
+  state = {
+    removeExpenseModal: undefined
+  }
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
     this.props.history.push('/');
   };
-  onRemove = () => {
+  handelRemoveExpense = () => {
+    this.setState(() => ({
+      removeExpenseModal: undefined
+    }));
     this.props.startRemoveExpense({ id: this.props.expense.id });
     this.props.history.push('/');
   };
+  onOpenRemoveModal = () => {
+    this.setState(() => ({
+      removeExpenseModal : this.props.expense.description
+    }));
+  };
+
+  handelCloseModal = () => {
+    this.setState(() => ({
+      removeExpenseModal: undefined
+    }));
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div>
@@ -29,9 +49,13 @@ export class EditExpensePage extends React.Component {
           onSubmit={this.onSubmit}
           />
           <div>
+            <RemoveExpenseModal
+              openRemoveExpenseModal={ this.state.removeExpenseModal }
+              handelRemoveExpense={ this.handelRemoveExpense }
+              handelCloseModal={ this.handelCloseModal}/>
           <button
             className="button button--secondary"
-            onClick={ this.onRemove }>
+            onClick={ this.onOpenRemoveModal }>
             Remove Expense
           </button>
           </div>

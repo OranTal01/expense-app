@@ -7,6 +7,8 @@
 
 .page-header__actions {
   margin-top: $m-size;
+  display: flex;
+  justify-content: space-between;
 }
 
 .page-header__title {
