@@ -18,11 +18,11 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export { firebase, googleAuthProvider, database as default };
 
-  
-  
-  
-  
-  
+
+
+
+
+
 // const firebaseConfig = {
 //   apiKey: "AIzaSyApzjadytp4fvhHUveoSEDBMbk-GzTkXXc",
 //   authDomain: "expensify-a0662.firebaseapp.com",
